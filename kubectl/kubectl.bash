@@ -24,8 +24,8 @@ EOF
     if [ -n "$region" ]; then
       echo "Running: gcloud config set container/use_v1_api_client false"
       gcloud config set container/use_v1_api_client false
-      echo "Running: gcloud beta container clusters get-credentials --project=\"$project\" --region=\"$region\" \"$cluster\""
-      gcloud beta container clusters get-credentials --project="$project" --region="$region" "$cluster" || exit
+      echo "Running: gcloud container clusters get-credentials --project=\"$project\" --region=\"$region\" \"$cluster\""
+      gcloud container clusters get-credentials --project="$project" --region="$region" "$cluster" || exit
     else
       echo "Running: gcloud container clusters get-credentials --project=\"$project\" --zone=\"$zone\" \"$cluster\""
       gcloud container clusters get-credentials --project="$project" --zone="$zone" "$cluster" || exit
