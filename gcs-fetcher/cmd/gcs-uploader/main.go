@@ -54,7 +54,7 @@ func main() {
 	}
 	bucket, object, generation, err := common.ParseBucketObject(*location)
 	if err != nil {
-		log.Fatalln("parsing location from %q: %v", *location, err)
+		log.Fatalf("parsing location from %q: %v", *location, err)
 	}
 	if generation != 0 {
 		log.Fatalln("cannot specify manifest file generation")
@@ -76,11 +76,11 @@ func main() {
 			return nil
 		}
 
-		u.Enqueue(path, info)
+		u.Do(ctx, path, info)
 		return nil
 	})
 
-	if err := u.Wait(ctx); err != nil {
+	if err := u.Done(ctx); err != nil {
 		log.Fatalf("Failed to upload: %v", err)
 	}
 }
