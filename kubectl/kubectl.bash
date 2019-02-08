@@ -26,7 +26,6 @@ else
     echo "Running: gcloud container clusters get-credentials --project=\"$project\" --zone=\"$zone\" \"$cluster\""
     gcloud container clusters get-credentials --project="$project" --zone="$zone" "$cluster" || exit
 fi
-fi
 
 echo "Running: kubectl $@"
 kubectl "$@"
